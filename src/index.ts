@@ -2,7 +2,7 @@ import { add, getDay } from "./objs";
 import { addOverLoad } from "./owerLoadedFunc";
 import { Counter } from "./owerloadClass";
 import { getTotal } from "./restParam";
-
+//project
 add().then((s) => console.log(s));
 
 console.log(getDay(2020, 4));
