@@ -70,5 +70,3 @@ type Usergibrid ={
   email:string;
   education:Education;
 };
-
-const usr: Usergibrid = User;
