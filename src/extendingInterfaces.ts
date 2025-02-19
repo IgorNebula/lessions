@@ -52,21 +52,49 @@ interface Person {
 
 /**
  * Hybrid Types
- * 
+ *
  */
 type StringOrNumber = string | number;
-//You can also use hybrid types to create more complex types
-//  that can represent a combination of several different types 
-// of values. For example:
-type Education ={
-  degree:string;
-  school:string;
-  yesar:number;
+// Вы также можете использовать гибридные типы для создания более сложных типов
+// это может представлять собой комбинацию нескольких различных типов
+// значений.Например:
+type Education = {
+  degree: string;
+  school: string;
+  yesar: number;
+};
+
+type Usergibrid = {
+  name: string;
+  age: number;
+  email: string;
+  education: Education;
+};
+/**
+ * Пример: гибридный тип объект-функция
+ * В данном примере интерфейс Logger представляет собой смесь
+ * двух типов функций: одни из них принимают сообщения
+ *  в качествае аргументов, а другие - нет. Кроме того,
+ *  он предоставляет свойство с именем level и метод с
+ * именем setLevel
+ */
+interface Logger {
+  (message: string): void; // объект реализующий этот интерфейс,так же должен поддерживать вызов себя как функции.
+  level: string;
+  setLevel(newLevel: string): void;
 }
 
-type Usergibrid ={
-  name:string;
-  age:number;
-  email:string;
-  education:Education;
-};
+function createLogger(): Logger {
+  let logger = function (message: string) {
+    //свойство-функция принимающая в параметры сообщение
+    console.log(`[${logger.level}] ${message}`); //вывод в консоль: уровень и сообщение описанных в интерфейсе
+  } as Logger; // утверждение типа указывающее компилятору что, эта функция реализация интерфейса "логгер"
+
+  logger.level = "info"; //устанавливаем начальный уровень лога в инфо
+  //Метод для изменения текущего уровня логгера
+  logger.setLevel = function (newLevel: string) {
+    //переменной "логгер" назначаем анонимную функцию с параметром " новый уровень"
+    logger.level = newLevel; // в атрибут "левел" переменной "логгер", записываем параметр "новый уровень" из анонимной функции
+  };
+  return logger; //возвращаем созданную переменную типа "Логгер"
+}
