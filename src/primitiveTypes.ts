@@ -88,6 +88,58 @@ enum Directin {
   Right,
 }
 const dir = Directin.Up;
-
+// Чтобы указать тип массива, подобного [1, 2, 3], вы можете использовать номер синтаксиса [];
+// Этот синтаксис работает для любого типа (например, строка [] является массивом строк и т. Д.).
+// Вы также можете увидеть это написано как массив <число>, что означает то же самое.
 const nums1: number[] = [1, 2, 3];
+const nums2: Array<number> = [1, 2, 3];
+//
+const nums2D: number[][] = [
+  [1, 1, 2, 3],
+  [1, 2, 3, 4],
+];
+//
+const nums3D: number[][][] = [
+  [
+    [1, 2, 3],
+    [1, 2, 3],
+    [1, 2, 3],
+  ],
+  [
+    [1, 2, 3],
+    [1, 2, 3],
+    [1, 2, 3],
+  ],
+  [
+    [1, 2, 3],
+    [1, 2, 3],
+    [1, 2, 3],
+  ],
+];
+// Тип кортежа - это еще один тип массива, который точно знает, сколько элементов
+// он содержит, и какие именно типы он содержит в определенных положениях.
+type StringNumberPair = [string, number];
 
+const pair: StringNumberPair = ["Hello", 42];
+
+const first = pair[0];
+const second = pair[1];
+
+//object -Чтобы определить тип объекта, мы просто перечислим его свойства и его типы.
+// Например, вот функция, которая принимает точечный объект:
+function printCoord(pt: { x: number; y: number }) {
+  console.log(pt.x + pt.y);
+}
+printCoord({ x: 3, y: 5 });
+
+function error(message: string): never {
+  throw new Error(message);
+}
+function fail() {
+  return error("something failed");
+}
+
+function infinitiLoop(): never {
+  // eslint-disable-next-line no-constant-condition, no-empty
+  while (true) {}
+}
