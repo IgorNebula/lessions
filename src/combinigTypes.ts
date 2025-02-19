@@ -25,7 +25,7 @@ combine;
 /**
  * #Intersection Types
  */
-interface Person {
+interface PersonIntersect {
   name: string;
   age: number;
 }
@@ -34,7 +34,7 @@ interface Address {
   country: string;
 }
 
-type PersonWithAddress = Person & Address;
+type PersonWithAddress = PersonIntersect & Address;
 
 const person: PersonWithAddress = {
   name: "john",
@@ -44,6 +44,7 @@ const person: PersonWithAddress = {
 };
 //symple
 person.age;
+
 /**
  * ### Type Aliases
  * Псевдоним типа в TypeScript позволяет создавать новое имя для типа.

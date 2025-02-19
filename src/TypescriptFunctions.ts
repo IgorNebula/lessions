@@ -30,8 +30,8 @@ divide = (a, b) => {
  *функция для вызова определяется на основе числа, типа и порядка
  *Аргументы переданы функции во время выполнения.
  */
-function add(a: number, b: number): number;
-function add(astr: string, b: string): string;
-function add(a: any, b: any): any {
+function addOver(a: number, b: number): number;
+function addOver(astr: string, b: string): string;
+function addOver(a: any, b: any): any {
   return a + b;
 }
